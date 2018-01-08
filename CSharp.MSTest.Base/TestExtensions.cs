@@ -10,6 +10,13 @@ namespace CSharp.MSTest.Base
     public static class TestExtensions
     {
         #region ShouldNotBeZero
+
+        /// <summary>
+        /// Throws an exception if the value is zero
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="message">The message.</param>
+        /// <exception cref="TestException"></exception>
         public static void ShouldNotBeZero(this float value, string message = null)
         {
             message = message ?? string.Format("Expected {0} not to be zero", value);
@@ -18,6 +25,12 @@ namespace CSharp.MSTest.Base
                 throw new TestException(message);
         }
 
+        /// <summary>
+        /// Throws an exception if the value is zero
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="message">The message.</param>
+        /// <exception cref="TestException"></exception>
         public static void ShouldNotBeZero(this short value, string message = null)
         {
             message = message ?? string.Format("Expected {0} not to be zero", value);
@@ -26,6 +39,12 @@ namespace CSharp.MSTest.Base
                 throw new TestException(message);
         }
 
+        /// <summary>
+        /// Throws an exception if the value is zero
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="message">The message.</param>
+        /// <exception cref="TestException"></exception>
         public static void ShouldNotBeZero(this decimal value, string message = null)
         {
             message = message ?? string.Format("Expected {0} not to be zero", value);
