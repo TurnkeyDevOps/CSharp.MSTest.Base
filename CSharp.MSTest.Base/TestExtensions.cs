@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -234,6 +236,15 @@ namespace CSharp.MSTest.Base
         }
         #endregion
 
+        public static void ShouldBeBetween<T>(this T actual, T start, T end, string message = null)
+            where T : IComparable
+        {
+            message = message ?? string.Format("{0} should be between {1} and {2}", actual, start, end);
+
+            if (start.CompareTo(actual) > 0 || end.CompareTo(actual) < 0)
+                throw new TestException(message);
+        }
+
         public static void ShouldContain(this string value, string containValue, string message = null)
         {
             message = message ?? string.Format("{0} should contain {1}", value, containValue);
@@ -247,6 +258,22 @@ namespace CSharp.MSTest.Base
             message = message ?? string.Format("{0} should not contain {1}", value, containValue);
 
             if (value != null && value.Contains(containValue))
+                throw new TestException(message);
+        }
+
+        public static void ShouldContain<T>(this IEnumerable<T> list, T value, string message = null)
+        {
+            message = message ?? "The list of " + typeof(T).Name + " did not contain the expected value " + value;
+
+            if (!list.Contains(value))
+                throw new TestException(message);            
+        }
+
+        public static void ShouldNotContain<T>(this IEnumerable<T> list, T value, string message = null)
+        {
+            message = message ?? "The list of " + typeof(T).Name + " contained a value " + value + " that it should not have.";
+
+            if (list.Contains(value))
                 throw new TestException(message);
         }
 
