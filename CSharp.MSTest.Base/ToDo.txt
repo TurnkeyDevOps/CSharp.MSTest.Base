@@ -1,0 +1,35 @@
+﻿Fake To Do
+----------
+Birth Date
+SSN
+Street Address
+City
+State
+Zip
+PostalCode
+Phone
+CreateDate
+CreatedAt
+UpdateDate
+CreateUser
+UpdateUser
+MachineName
+OrderDate
+SSN
+CountryCode
+Desc
+Geocode
+Ends with No for DealerNo
+Email
+Address2
+province
+browserheight
+browserwidth
+browserip (ends with Ip)
+Count 1-5
+Status
+Price
+Quantity 1-5
+Sku
+Name
+CreditCardNumber

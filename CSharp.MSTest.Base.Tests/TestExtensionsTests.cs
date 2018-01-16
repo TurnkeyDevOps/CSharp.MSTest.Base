@@ -12,10 +12,18 @@ namespace CSharp.MSTest.Base.Tests
             1.ShouldEqual(1);
         }
 
-        [TestMethod, ExpectedException(typeof(TestException))]
+        [TestMethod]
         public void ShouldEqual_Negative()
         {
-            1.ShouldEqual(2);
+            try
+            {
+                1.ShouldEqual(2);
+                Assert.Fail("Should have thrown TestException");
+            }
+            catch (TestException)
+            {
+            }
+            
         }
     }
 }
