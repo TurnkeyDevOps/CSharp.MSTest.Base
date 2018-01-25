@@ -11,6 +11,54 @@ namespace CSharp.MSTest.Base.Tests
     public class FakeTests
     {
         [TestMethod]
+        public void ZipCode_Should_Not_Be_Blank()
+        {
+            //Act
+            string result = Fake.ZipCode();
+
+            //Assert
+            Console.WriteLine(result);
+            result.ShouldNotBeNullOrEmpty();
+        }
+
+        [TestMethod]
+        public void StateAbbreviation_Should_Not_Be_Blank()
+        {
+            //Act
+            string result = Fake.StateAbbreviation();
+
+            //Assert
+            Console.WriteLine(result);
+            result.ShouldNotBeNullOrEmpty();
+        }
+
+        [TestMethod]
+        public void SSN_Should_Not_Be_Blank()
+        {
+            //Act
+            string result = Fake.SSN();
+
+            //Assert
+            Console.WriteLine(result);
+            result.ShouldNotBeNullOrEmpty();
+        }
+
+        [TestMethod]
+        public void BirthDate_Should_Be_Over_21_And_Less_Than_61()
+        {
+            //Arrange
+            int maxYear = DateTime.Now.Year - 21;
+            int minYear = DateTime.Now.Year - 60;
+
+            //Act
+            DateTime date = Fake.BirthDate();
+
+            //Assert
+            Console.WriteLine(date);
+            date.Year.ShouldBeBetween(minYear, maxYear);
+        }
+
+        [TestMethod]
         public void Latitude_Should_Not_Be_Zero()
         {
             //Act

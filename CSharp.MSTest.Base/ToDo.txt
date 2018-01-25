@@ -1,12 +1,12 @@
 ﻿Fake To Do
 ----------
-Birth Date
-SSN
-Street Address
+Birth Date x
+SSN x
+Street Address (Alex is doing this)
 City
-State
-Zip
-PostalCode
+State x
+Zip x
+PostalCode x
 Phone
 CreateDate
 CreatedAt

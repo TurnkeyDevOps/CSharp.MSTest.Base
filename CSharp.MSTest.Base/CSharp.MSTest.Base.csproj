@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="FakeData\FirstNames.txt" />
     <Content Include="FakeData\LastNames.txt" />
+    <Content Include="FakeData\USStateAbbreviations.txt" />
     <Content Include="ToDo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
