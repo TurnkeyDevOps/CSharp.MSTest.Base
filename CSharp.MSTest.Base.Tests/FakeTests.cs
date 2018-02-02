@@ -10,6 +10,8 @@ namespace CSharp.MSTest.Base.Tests
     [TestClass]
     public class FakeTests
     {
+       
+
         [TestMethod]
         public void ZipCode_Should_Not_Be_Blank()
         {
@@ -123,5 +125,22 @@ namespace CSharp.MSTest.Base.Tests
             Console.WriteLine(result);
             result.ShouldBeBetween(.01M, .99M);
         }
+
+        [TestMethod]
+        public void Address_Length_Should_Be_10()
+        {
+            //Arrage
+            int expected = 36;
+
+            //Act
+            string result = Fake.address();
+            Console.WriteLine(result);
+
+            //Assert
+            result.Length.Equals(expected);
+
+        }
+
+
     }
 }

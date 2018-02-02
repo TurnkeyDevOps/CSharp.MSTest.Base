@@ -114,5 +114,46 @@ namespace CSharp.MSTest.Base
 
             return _random.NextDouble() * (max - min) + min;
         }
+
+        public static string address()
+        {
+            //variables
+            string[] stateArray = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                                   "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                                   "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                                   "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                                   "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
+
+            const string chars = "abcdefghijklmnopqrstuvwxyz";
+            var streetChars = new char[10];
+            var cityChars = new char[8];
+
+            //Random Selection
+            string state = stateArray[_random.Next(0, stateArray.Length)];
+            
+
+            for (int i = 0; i < streetChars.Length; i++)
+            {
+                streetChars[i] = chars[_random.Next(chars.Length)];
+            }
+
+            string street = new string(streetChars);
+
+            for (int i = 0; i < cityChars.Length; i++)
+            {
+                cityChars[i] = chars[_random.Next(chars.Length)];
+            }
+
+            string city = new string(cityChars);
+
+            string houseNumber = _random.Next(100, 999).ToString();
+            string zipCode = _random.Next(10000, 99999).ToString();
+
+            //Create Address
+            string fullAddress = houseNumber + " " + street + " rd " + city + ", " + state + " " + zipCode;
+
+            string capitalizedAddress = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(fullAddress.ToLower());
+            return capitalizedAddress;
+        }
     }
 }
