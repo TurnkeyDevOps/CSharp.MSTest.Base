@@ -57,6 +57,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Addresses.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="FakeData\FirstNames.txt" />
     <Content Include="FakeData\LastNames.txt" />
     <Content Include="FakeData\USStateAbbreviations.txt" />

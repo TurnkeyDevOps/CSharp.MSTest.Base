@@ -127,18 +127,17 @@ namespace CSharp.MSTest.Base.Tests
         }
 
         [TestMethod]
-        public void Address_Length_Should_Be_10()
+        public void Address_Length_Should_Be_Greater_Than_Zero()
         {
             //Arrage
-            int expected = 36;
+            int expected = 0;
 
             //Act
             string result = Fake.address();
             Console.WriteLine(result);
 
             //Assert
-            result.Length.Equals(expected);
-
+            result.Length.ShouldBeGreaterThan(expected);
         }
 
 

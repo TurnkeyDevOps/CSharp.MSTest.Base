@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CSharp.MSTest.Base
 {
@@ -117,43 +118,15 @@ namespace CSharp.MSTest.Base
 
         public static string address()
         {
-            //variables
-            string[] stateArray = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
-                                   "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
-                                   "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
-                                   "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
-                                   "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
-
-            const string chars = "abcdefghijklmnopqrstuvwxyz";
-            var streetChars = new char[10];
-            var cityChars = new char[8];
-
-            //Random Selection
-            string state = stateArray[_random.Next(0, stateArray.Length)];
-            
-
-            for (int i = 0; i < streetChars.Length; i++)
+            var reader = new StreamReader(File.OpenRead(@"Addresses.txt"));
+            List<string> listRows = new List<string>();
+            while (!reader.EndOfStream)
             {
-                streetChars[i] = chars[_random.Next(chars.Length)];
+                listRows.Add(reader.ReadLine());
             }
-
-            string street = new string(streetChars);
-
-            for (int i = 0; i < cityChars.Length; i++)
-            {
-                cityChars[i] = chars[_random.Next(chars.Length)];
-            }
-
-            string city = new string(cityChars);
-
-            string houseNumber = _random.Next(100, 999).ToString();
-            string zipCode = _random.Next(10000, 99999).ToString();
-
-            //Create Address
-            string fullAddress = houseNumber + " " + street + " rd " + city + ", " + state + " " + zipCode;
-
-            string capitalizedAddress = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(fullAddress.ToLower());
-            return capitalizedAddress;
+            int index = _random.Next(listRows.Count);
+            string random_address = listRows[ index ];
+            return random_address;
         }
     }
 }
